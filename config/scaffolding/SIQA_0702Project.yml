@@ -30,6 +30,7 @@ packages:
   gitUsername: prabhakarsag
   gitBranch: main
 - name: JMS2waySSL
+  version: "1.0"
   gitServerName: SIQAPsur
   gitUrl: https://github.com/prabhakarsag
   gitUsername: prabhakarsag
@@ -38,6 +39,8 @@ services:
 - serviceName: project.siqa_0702.WmJDBCAdapter.com_wm_adapter_wmjdbc_JDBCAdapter.connections:Database_702
   packages:
   - name: SIQA_0702Project
+    version: "1.0"
+  - name: JMS2waySSL
     version: "1.0"
   - name: DADA_GlobalVariable1
     version: "1.0"
@@ -53,6 +56,8 @@ services:
   packages:
   - name: SIQA_0702Project
     version: "1.0"
+  - name: JMS2waySSL
+    version: "1.0"
   - name: DADA_GlobalVariable1
     version: "1.0"
   - name: SSL_JDBC_Test
@@ -66,6 +71,8 @@ services:
 - serviceName: project.siqa_0702.integrations:AlertsCRTandERT
   packages:
   - name: SIQA_0702Project
+    version: "1.0"
+  - name: JMS2waySSL
     version: "1.0"
   - name: DADA_GlobalVariable1
     version: "1.0"
@@ -81,9 +88,35 @@ services:
   packages:
   - name: WmPublic
     version: 11.1.0.0.2033
+- serviceName: project.siqa_0702.integrations:JMS_JNDI_SSL
+  packages:
+  - name: SIQA_0702Project
+    version: "1.0"
+  - name: JMS2waySSL
+    version: "1.0"
+  - name: DADA_GlobalVariable1
+    version: "1.0"
+  - name: SSL_JDBC_Test
+    version: "1.0"
+  - name: SIQAJDBCAdapterTests
+    version: "1.0"
+  - name: WmJDBCAdapter
+    version: 10.3.0.0.34
+    wpmServer: https://packages.webmethods.io
+    wpmRegistry: licensed
+- serviceName: publisher:publisher
+  packages:
+  - name: JMS2waySSL
+    version: "1.0"
+- serviceName: pub.jms:send
+  packages:
+  - name: WmPublic
+    version: 11.1.0.0.2033
 - serviceName: project.siqa_0702.integrations:SIQAAdapterFlow
   packages:
   - name: SIQA_0702Project
+    version: "1.0"
+  - name: JMS2waySSL
     version: "1.0"
   - name: DADA_GlobalVariable1
     version: "1.0"
@@ -98,6 +131,8 @@ services:
 - serviceName: project.siqa_0702.integrations:SSL_JDBC_test
   packages:
   - name: SIQA_0702Project
+    version: "1.0"
+  - name: JMS2waySSL
     version: "1.0"
   - name: DADA_GlobalVariable1
     version: "1.0"
@@ -121,6 +156,8 @@ services:
   packages:
   - name: SIQA_0702Project
     version: "1.0"
+  - name: JMS2waySSL
+    version: "1.0"
   - name: DADA_GlobalVariable1
     version: "1.0"
   - name: SSL_JDBC_Test
@@ -142,6 +179,8 @@ services:
 - serviceName: project.siqa_0702.integrations:deepclonetest
   packages:
   - name: SIQA_0702Project
+    version: "1.0"
+  - name: JMS2waySSL
     version: "1.0"
   - name: DADA_GlobalVariable1
     version: "1.0"
@@ -169,6 +208,8 @@ services:
   packages:
   - name: SIQA_0702Project
     version: "1.0"
+  - name: JMS2waySSL
+    version: "1.0"
   - name: DADA_GlobalVariable1
     version: "1.0"
   - name: SSL_JDBC_Test
@@ -188,35 +229,19 @@ services:
     wpmServer: https://packages.webmethods.io
     wpmRegistry: licensed
 configurationVariables:
-  jdbc.jdbcTestPool.waitingThread: "0"
-  jdbc.jdbcTestPool.minConns: "0"
   ? artConnection.SIQA_0702Project.project.siqa_0702.WmJDBCAdapter.com_wm_adapter_wmjdbc_JDBCAdapter.connections.Database_702.connectionSettings.keyStore
   : ""
-  jdbc.jdbcTestPool.expireTime: "60000"
-  ? artConnection.SIQA_0702Project.project.siqa_0702.WmJDBCAdapter.com_wm_adapter_wmjdbc_JDBCAdapter.connections.Database_702.connectionSettings.user
-  : sa
-  ? artConnection.SIQA_0702Project.project.siqa_0702.WmJDBCAdapter.com_wm_adapter_wmjdbc_JDBCAdapter.connections.Database_702.connectionManagerSettings.startupBackoffSecs
-  : "10"
   ? artConnection.SIQA_0702Project.project.siqa_0702.WmJDBCAdapter.com_wm_adapter_wmjdbc_JDBCAdapter.connections.Database_702.connectionManagerSettings.expireTimeout
   : "1000"
   ? artConnection.SIQA_0702Project.project.siqa_0702.WmJDBCAdapter.com_wm_adapter_wmjdbc_JDBCAdapter.connections.Database_702.connectionSettings.serverName
   : vmiboint01
+  jdbc.jdbcTestPool.snoopparms: ddtdbg.ProtocolTraceEnable=true;ddtdbg.ProtocolTraceMaxline=16;ddtdbg.ProtocolTraceLocation=logs/snoop/jdbcTestPool.log;ddtdbg.ProtocolTraceShowTime=true
   ? artConnection.SIQA_0702Project.project.siqa_0702.WmJDBCAdapter.com_wm_adapter_wmjdbc_JDBCAdapter.connections.Database_702.connectionManagerSettings.minimumPoolSize
   : "1"
-  jdbc.jdbcTestPool.snoopparms: ddtdbg.ProtocolTraceEnable=true;ddtdbg.ProtocolTraceMaxline=16;ddtdbg.ProtocolTraceLocation=logs/snoop/jdbcTestPool.log;ddtdbg.ProtocolTraceShowTime=true
-  ? artConnection.SIQA_0702Project.project.siqa_0702.WmJDBCAdapter.com_wm_adapter_wmjdbc_JDBCAdapter.connections.Database_702.connectionSettings.trustStore
-  : ""
-  ? artConnection.SIQA_0702Project.project.siqa_0702.WmJDBCAdapter.com_wm_adapter_wmjdbc_JDBCAdapter.connections.Database_702.connectionSettings.otherProperties
-  : loginTimeout=60;driverType=thin;
   jdbc.jdbcTestPool.maxConns: "10"
   jdbc.jdbcTestPool.userid: root
   ? artConnection.SIQA_0702Project.project.siqa_0702.WmJDBCAdapter.com_wm_adapter_wmjdbc_JDBCAdapter.connections.Database_702.connectionSettings.password
   : "{AES}B2Xqma4Ost5nVUiXctJydQ=="
-  ? artConnection.SIQA_0702Project.project.siqa_0702.WmJDBCAdapter.com_wm_adapter_wmjdbc_JDBCAdapter.connections.Database_702.connectionManagerSettings.heartBeatInterval
-  : "0"
-  jdbc.jdbcTestPool.driverAlias: MySQL Database Java Connector Driver
-  ? artConnection.SIQA_0702Project.project.siqa_0702.WmJDBCAdapter.com_wm_adapter_wmjdbc_JDBCAdapter.connections.Database_702.connectionSettings.driverType
-  : Progress® DataDirect®
   ? artConnection.SIQA_0702Project.project.siqa_0702.WmJDBCAdapter.com_wm_adapter_wmjdbc_JDBCAdapter.connections.Database_702.connectionSettings.dbType
   : MSSQL
   ? artConnection.SIQA_0702Project.project.siqa_0702.WmJDBCAdapter.com_wm_adapter_wmjdbc_JDBCAdapter.connections.Database_702.connectionManagerSettings.startupRetryCount
@@ -229,8 +254,26 @@ configurationVariables:
   jdbc.jdbcTestPool.snoopenabled: "false"
   ? artConnection.SIQA_0702Project.project.siqa_0702.WmJDBCAdapter.com_wm_adapter_wmjdbc_JDBCAdapter.connections.Database_702.connectionManagerSettings.maximumPoolSize
   : "10"
-  jdbc.jdbcTestPool.password: "{AES}er+I3U8nDVm8F4DBRST1+A=="
   jdbc.jdbcTestPool.spyparms: SpyAttributes=(log=(file)logs/spy/jdbcTestPool.log;logTName=yes;timestamp=yes)
+  ? artConnection.SIQA_0702Project.project.siqa_0702.WmJDBCAdapter.com_wm_adapter_wmjdbc_JDBCAdapter.connections.Database_702.connectionManagerSettings.poolIncrementSize
+  : "1"
+  jdbc.jdbcTestPool.waitingThread: "0"
+  jdbc.jdbcTestPool.minConns: "0"
+  jdbc.jdbcTestPool.expireTime: "60000"
+  ? artConnection.SIQA_0702Project.project.siqa_0702.WmJDBCAdapter.com_wm_adapter_wmjdbc_JDBCAdapter.connections.Database_702.connectionSettings.user
+  : sa
+  ? artConnection.SIQA_0702Project.project.siqa_0702.WmJDBCAdapter.com_wm_adapter_wmjdbc_JDBCAdapter.connections.Database_702.connectionManagerSettings.startupBackoffSecs
+  : "10"
+  ? artConnection.SIQA_0702Project.project.siqa_0702.WmJDBCAdapter.com_wm_adapter_wmjdbc_JDBCAdapter.connections.Database_702.connectionSettings.trustStore
+  : ""
+  ? artConnection.SIQA_0702Project.project.siqa_0702.WmJDBCAdapter.com_wm_adapter_wmjdbc_JDBCAdapter.connections.Database_702.connectionSettings.otherProperties
+  : loginTimeout=60;driverType=thin;
+  ? artConnection.SIQA_0702Project.project.siqa_0702.WmJDBCAdapter.com_wm_adapter_wmjdbc_JDBCAdapter.connections.Database_702.connectionManagerSettings.heartBeatInterval
+  : "0"
+  jdbc.jdbcTestPool.driverAlias: MySQL Database Java Connector Driver
+  ? artConnection.SIQA_0702Project.project.siqa_0702.WmJDBCAdapter.com_wm_adapter_wmjdbc_JDBCAdapter.connections.Database_702.connectionSettings.driverType
+  : Progress® DataDirect®
+  jdbc.jdbcTestPool.password: "{AES}er+I3U8nDVm8F4DBRST1+A=="
   jdbc.jdbcTestPool.dbURL: jdbc:mysql://mysql.test.local:3306/webm
   jdbc.jdbcTestPool.poolThreshold: "0"
   ? artConnection.SIQA_0702Project.project.siqa_0702.WmJDBCAdapter.com_wm_adapter_wmjdbc_JDBCAdapter.connections.Database_702.connectionEnabled
@@ -243,8 +286,6 @@ configurationVariables:
   : "false"
   ? artConnection.SIQA_0702Project.project.siqa_0702.WmJDBCAdapter.com_wm_adapter_wmjdbc_JDBCAdapter.connections.Database_702.connectionSettings.transactionType
   : NO_TRANSACTION
-  ? artConnection.SIQA_0702Project.project.siqa_0702.WmJDBCAdapter.com_wm_adapter_wmjdbc_JDBCAdapter.connections.Database_702.connectionManagerSettings.poolIncrementSize
-  : "1"
   jdbc.jdbcTestPool.useSSL: "false"
   ? artConnection.SIQA_0702Project.project.siqa_0702.WmJDBCAdapter.com_wm_adapter_wmjdbc_JDBCAdapter.connections.Database_702.connectionSettings.networkProtocol
   : tcp
